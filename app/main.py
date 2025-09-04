@@ -5,9 +5,10 @@ from app.services.predict import predict_delay
 
 app = FastAPI(title="Flight Delay Prediction API")
 
+# Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # You can restrict this to your frontend domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -20,4 +21,4 @@ def home():
 @app.post("/predict")
 def predict(data: FlightData):
     result = predict_delay(data)
-    return {"predicted_arrival_delay": result}
+    return {"predicted_arrival_delay": result}
