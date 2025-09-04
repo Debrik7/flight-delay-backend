@@ -1,8 +1,18 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.models.request_model import FlightData
 from app.services.predict import predict_delay
 
 app = FastAPI(title="Flight Delay Prediction API")
+
+# ✅ Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change to your frontend domain in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
@@ -11,4 +21,4 @@ def home():
 @app.post("/predict")
 def predict(data: FlightData):
     result = predict_delay(data)
-    return {"predicted_arrival_delay": result}
+    return {"predicted_arrival_delay": result}
