@@ -5,10 +5,9 @@ from app.services.predict import predict_delay
 
 app = FastAPI(title="Flight Delay Prediction API")
 
-# ✅ Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change to your frontend domain in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
