@@ -1,13 +1,16 @@
 from pydantic import BaseModel
 
-class FlightData(BaseModel):
-    DEPARTURE_DELAY: float
-    TAXI_OUT: float
-    TAXI_IN: float
-    AIR_TIME: float
-    ELAPSED_TIME: float
-    SCHEDULED_TIME: float
-    WEATHER_DELAY: float
-    ORIGIN_AIRPORT: int
-    DESTINATION_AIRPORT: int
-    AIRLINE: int
+class FlightInput(BaseModel):
+    YEAR: int
+    MONTH: int
+    DAY: int
+    AIRLINE: str
+    FLIGHT_NUMBER: int
+    ORIGIN_AIRPORT: str
+    ORIGIN_LATITUDE: float
+    ORIGIN_LONGITUDE: float
+    DESTINATION_AIRPORT: str
+    SCHEDULED_DEPARTURE: int
+    SCHEDULED_TIME: int
+    ORIGIN_WEATHER: str
+    ORIGIN_WIND_SPEED: float
