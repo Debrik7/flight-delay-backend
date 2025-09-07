@@ -1,7 +1,7 @@
 import joblib
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(_file_)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_DIR = os.path.join(BASE_DIR, "models") 
 
 def load_models_and_encoders():
